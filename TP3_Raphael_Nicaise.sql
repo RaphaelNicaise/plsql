@@ -1,7 +1,8 @@
+
 --EJECUCION 1: CREACION DE FUNCION get_employee_sal 
 CREATE OR REPLACE FUNCTION get_employee_sal (e_id OEHR_EMPLOYEES.EMPLOYEE_ID%TYPE)
     RETURN NUMBER
-IS l_salary OEHR_EMPLOYEES.SALARY%TYPE;
+IS l_salary         OEHR_EMPLOYEES.SALARY%TYPE;
 BEGIN
     SELECT SALARY INTO l_salary
       FROM OEHR_EMPLOYEES
@@ -25,8 +26,8 @@ END;
 -- EJECUCION 3: CREACION DE SP cambiarSalario
 CREATE OR REPLACE PROCEDURE cambiarSalario (emp_id IN NUMBER,cantidad IN NUMBER)
 AS
-    salario_antiguo   OEHR_EMPLOYEES.SALARY%TYPE;
-    nuevo_salario     OEHR_EMPLOYEES.SALARY%TYPE;
+    salario_antiguo     OEHR_EMPLOYEES.SALARY%TYPE;
+    nuevo_salario       OEHR_EMPLOYEES.SALARY%TYPE;
 BEGIN
     salario_antiguo := get_employee_sal(emp_id); -- uso de la funcion get_employee_sal para obtener el salario del usuario ingresado en el procedure
     nuevo_salario := (salario_antiguo + cantidad); -- al salario antiguo le aumentamos la cantidad ingresada en el procedure
